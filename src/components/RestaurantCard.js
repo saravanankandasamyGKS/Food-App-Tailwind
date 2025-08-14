@@ -7,7 +7,7 @@ const RestaurantCard = ({ resData }) => {
 
   return (
     <div
-      className="w-64 h-96 bg-gradient-to-br from-yellow-200 to-yellow-100
+      className="w-64 h-96 bg-gradient-to-br from-green-200 to-green-100
                  rounded-2xl shadow-lg p-5
                  hover:shadow-2xl transform hover:scale-105
                  transition duration-300 cursor-pointer
