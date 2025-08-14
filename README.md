@@ -1,5 +1,5 @@
 # Food-App-Tailwind
 
-#install cors extinsion
+# install cors extinsion
 
-#npm start
+# npm start
