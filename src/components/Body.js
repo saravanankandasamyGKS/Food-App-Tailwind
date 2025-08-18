@@ -17,19 +17,33 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9083215&lng=77.6050777&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
+    try {
+      const data = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9226449&lng=77.6174197&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
 
-    setListOfRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+      if (!data.ok) {
+        throw new Error(`HTTP error! Status: ${data.status}`);
+      }
+
+      const json = await data.json();
+
+      setListOfRestaurant(
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+
+      setFilteredRestaurant(
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
+      );
+    } catch (error) {
+      console.error("Failed to fetch restaurant data:", error);
+      alert("Oops! Something went wrong while fetching restaurant data.");
+      setListOfRestaurant([]);
+      setFilteredRestaurant([]);
+    }
   };
-
   if (onlineStatus === false)
     return (
       <h1 className="text-center text-red-600 text-xl my-6">
