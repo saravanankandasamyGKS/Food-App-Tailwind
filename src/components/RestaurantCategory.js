@@ -10,13 +10,13 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
         onClick={setShowIndex}
       >
         <h3 className="text-lg font-semibold text-green-800">
-          {data.title} ({data.itemCards.length})
+          {data?.title} ({data?.itemCards?.length})
         </h3>
         <span className="text-2xl text-green-600">{showItems ? "▲" : "▼"}</span>
       </div>
 
       {/* Accordion Body */}
-      {showItems && <ItemList items={data.itemCards} />}
+      {showItems && <ItemList items={data?.itemCards} />}
     </div>
   );
 };

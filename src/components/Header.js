@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const onlineStatus = useOnlineStatus();
-  const cartItems = useSelector((store) => store.cart.items);
+  const cartItems = useSelector((store) => store?.cart?.items);
 
   return (
     <header className="sticky top-0 z-50 flex flex-wrap justify-between items-center bg-green-50 p-4 shadow-md">
@@ -34,7 +34,7 @@ const Header = () => {
           to="/cart"
           className="font-bold text-xl hover:text-green-800 flex items-center"
         >
-          Cart Items ({cartItems.length})
+          Cart Items ({cartItems?.length})
         </Link>
         <button
           className="bg-green-700 text-white px-4 py-1 rounded hover:bg-green-900"
