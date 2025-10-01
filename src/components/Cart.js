@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ItemList from "./ItemList";
-import { clearCart } from "../utils/cartSlice";
+import { clearCart, removeItems } from "../utils/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
@@ -9,6 +9,9 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+  const handleRemoveItems = () => {
+    dispatch(removeItems());
   };
 
   return (
@@ -19,6 +22,12 @@ const Cart = () => {
         onClick={handleClearCart}
       >
         Clear Cart
+      </button>
+      <button
+        className="p-3 mb-6 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
+        onClick={handleRemoveItems}
+      >
+        Remove Items
       </button>
       {cartItems.length === 0 ? (
         <h2 className="text-lg text-gray-700">
