@@ -10,8 +10,7 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
 
   if (!resInfo) return <Shimmer />;
-
-  const { name, cuisines, costForTwoMessage } =
+  const {name,cuisines,costForTwoMessage} =
     resInfo?.cards[2]?.card?.card?.info;
 
   const categories =
