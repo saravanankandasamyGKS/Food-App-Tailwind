@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
 
   if (!resInfo) return <Shimmer />;
   const { name, cuisines, costForTwoMessage } =
-    resInfo?.cards[2]?.card?.card?.info;
+    resInfo?.cards[2]?.card?.card?.info || {};
 
   const categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
@@ -26,7 +26,7 @@ const RestaurantMenu = () => {
         {name}
       </h1>
       <p className="text-center text-lg text-green-600 mb-8">
-        {cuisines.join(", ")} - {costForTwoMessage}
+        {cuisines?.join(", ")} - {costForTwoMessage}
       </p>
 
       {categories?.map((category, index) => (
